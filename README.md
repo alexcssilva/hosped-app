@@ -45,15 +45,7 @@ Neste projeto, verificaremos se você é capaz de:
 
 <br /></details>
 
-<details><summary><strong>🗓 Data de Entrega</strong></summary><br />
 
-- Este projeto é individual;
-
-- Serão `3` dias de projeto;
-
-- Data para entrega final do projeto: `dd/mm/yyyy - 14:00h`.
-
-<br /></details>
 
 ## Orientações
 
@@ -1293,7 +1285,7 @@ CoroutineScope(Main).launch {
 Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário.
 **Leva menos de 3 minutos!**
 
-[Formulário de avaliação do projeto](https://be-trybe.typeform.com/to/ZTeR4IbH)
+[Formulário de avaliação do projeto](https://be-trybe.typeform.com/to/ZTeR4IbH#cohort_hidden=CH1&template=betrybe/android-0x-projeto-trybnb)
 
 <br /></details>
 
