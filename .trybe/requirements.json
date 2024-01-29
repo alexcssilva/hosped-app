@@ -1,0 +1,92 @@
+{
+  "requirements": [
+    {
+      "bonus": false,
+      "description": "test_req_1_configure_a_estrutura_inicial_da_tela_incluindo_a_barra_superior_com_o_logotipo",
+      "enabled": true,
+      "identifier": null,
+      "order": 1,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_2_configure_a_estrutura_da_tela_inicial_adicionando_uma_barra_de_navegacao_na_parte_inferior_e_um_fragment_container",
+      "enabled": true,
+      "identifier": null,
+      "order": 2,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_3_Implemente_a_navegacao_do_bottom_navigation_de_forma_que_ao_clicar_em_cada_item_do_menu_seja_chamado_o_respectivo_fragmento",
+      "enabled": true,
+      "identifier": null,
+      "order": 3,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_4_crie_a_estrutura_do_fragmento_perfil",
+      "enabled": true,
+      "identifier": null,
+      "order": 4,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_5_implemente_a_validacao_do_campo_login_e_password",
+      "enabled": true,
+      "identifier": null,
+      "order": 5,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_6_realizar_requisicao_ao_endpoint_post_auth_via_retrofit",
+      "enabled": true,
+      "identifier": null,
+      "order": 6,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_7_crie_a_estrutura_do_layout_do_fragmento_reservas",
+      "enabled": true,
+      "identifier": null,
+      "order": 7,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_8_desenvolva_o_layout_do_item_e_popule_a_lista_com_as_informacoes_provenientes_da_api",
+      "enabled": true,
+      "identifier": null,
+      "order": 8,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_9_desenvolva_o_layout_da_tela_criar_uma_reserva",
+      "enabled": true,
+      "identifier": null,
+      "order": 9,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_10_testar_validacoes_da_tela_criar_reserva",
+      "enabled": true,
+      "identifier": null,
+      "order": 10,
+      "skill_ids": []
+    },
+    {
+      "bonus": false,
+      "description": "test_req_11_realizar_requisicao_ao_endpoint_post_booking_usando_retrofit",
+      "enabled": true,
+      "identifier": null,
+      "order": 11,
+      "skill_ids": []
+    }
+  ]
+}
