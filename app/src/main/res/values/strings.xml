@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Trybnb</string>
+    <string name="reservations">Reservas</string>
+    <string name="create_reservations">Criar Reservas</string>
+    <string name="profile">Perfil</string>
 </resources>
