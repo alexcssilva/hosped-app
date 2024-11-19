@@ -3,4 +3,7 @@
     <string name="reservations">Reservas</string>
     <string name="create_reservations">Criar Reservas</string>
     <string name="profile">Perfil</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    Password
 </resources>
