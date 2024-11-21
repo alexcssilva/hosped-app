@@ -12,7 +12,7 @@ import com.betrybe.trybnb.ui.viewmodels.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
-class ProfileFragment: Fragment() {
+class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private val profileVM: ProfileViewModel by viewModels()
@@ -22,9 +22,7 @@ class ProfileFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
         binding = FragmentProfileBinding.bind(view)
 
         binding.loginButtonProfile.setOnClickListener {
@@ -39,13 +37,14 @@ class ProfileFragment: Fragment() {
 
             profileVM.login(loginText, passText)
 
-            if (!profileVM.failure.value) Snackbar.make(
-                binding.profileScrollView,
-                getString(R.string.login_success),
-                Snackbar.LENGTH_SHORT
-            ).show()
+            if (!profileVM.failure.value) {
+                Snackbar.make(
+                    binding.profileScrollView,
+                    getString(R.string.login_success),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         }
-        
         return view
     }
 
@@ -64,5 +63,4 @@ class ProfileFragment: Fragment() {
             input.error = null
         }
     }
-
 }

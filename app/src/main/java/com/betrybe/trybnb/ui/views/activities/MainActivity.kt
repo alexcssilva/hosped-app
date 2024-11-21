@@ -10,7 +10,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private val mBottomNavigation: BottomNavigationView by lazy { findViewById(R.id.navigation_bottom_view) }
+    private val mBottomNavigation: BottomNavigationView by lazy {
+        findViewById(R.id.navigation_bottom_view)
+    }
+
     private val reservationFragment = ReservationFragment()
     private val createReservationFragment = CreateReservationFragment()
     private val profileFragment = ProfileFragment()

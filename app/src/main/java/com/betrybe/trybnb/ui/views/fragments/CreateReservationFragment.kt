@@ -12,8 +12,6 @@ import com.betrybe.trybnb.data.models.BookingDates
 import com.betrybe.trybnb.databinding.FragmentCreateReservationBinding
 import com.betrybe.trybnb.ui.viewmodels.CreateReservationViewModel
 import com.google.android.material.snackbar.Snackbar
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
 
 class CreateReservationFragment : Fragment() {
     private lateinit var binding: FragmentCreateReservationBinding
@@ -46,7 +44,7 @@ class CreateReservationFragment : Fragment() {
                             binding.checkinInput.text.toString(),
                             binding.checkoutInput.text.toString()
                         ),
-                        binding.additionalNeedsInput.text.toString(),
+                        binding.additionalNeedsInput.text.toString()
                     )
                 )
             }
@@ -94,7 +92,9 @@ class CreateReservationFragment : Fragment() {
             binding.checkoutCreateReservation.error = null
         }
         if (binding.additionalNeedsCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.additionalNeedsCreateReservation.error = getString(R.string.additional_needs_required)
+            binding.additionalNeedsCreateReservation.error =
+                getString(R.string.additional_needs_required)
+
             isValid = false
         } else {
             binding.additionalNeedsCreateReservation.error = null
@@ -107,5 +107,4 @@ class CreateReservationFragment : Fragment() {
         }
         return isValid
     }
-
 }

@@ -29,6 +29,4 @@ class ProfileViewModel : ViewModel() {
             ApiIdlingResource.decrement()
         }
     }
-
-
 }

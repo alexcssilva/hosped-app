@@ -13,7 +13,7 @@ import com.betrybe.trybnb.databinding.FragmentReservationBinding
 import com.betrybe.trybnb.ui.adapters.BookingAdapter
 import com.betrybe.trybnb.ui.viewmodels.BookingViewModel
 
-class ReservationFragment: Fragment() {
+class ReservationFragment : Fragment() {
 
     private lateinit var binding: FragmentReservationBinding
     private val viewModel: BookingViewModel by viewModels()
@@ -24,7 +24,6 @@ class ReservationFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_reservation, container, false)
 
         binding = FragmentReservationBinding.bind(view)
@@ -36,7 +35,6 @@ class ReservationFragment: Fragment() {
         mRecyclerView = view.findViewById(R.id.reservation_recycler_view)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
     }
-
 
     override fun onStart() {
         super.onStart()
