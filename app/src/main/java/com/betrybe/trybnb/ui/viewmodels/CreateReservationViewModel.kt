@@ -1,7 +1,5 @@
 package com.betrybe.trybnb.ui.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.betrybe.trybnb.common.ApiIdlingResource
 import com.betrybe.trybnb.data.models.Booking
@@ -15,24 +13,24 @@ import kotlinx.coroutines.launch
 class CreateReservationViewModel : ViewModel() {
     private val mBookingRepository = BookingRepository()
 
-    private var _errorMessage = MutableLiveData("")
-    val errorMessage: LiveData<String>
+    private val _errorMessage = MutableStateFlow(false)
+    val errorMessage: StateFlow<Boolean>
         get() = _errorMessage
+
+    private val _isSuccess = MutableStateFlow(false)
+    val isBookingCreationSuccess: StateFlow<Boolean>
+        get() = _isSuccess
 
     private var _isErrorOccurred = MutableStateFlow(false)
     val isErrorOccurred: StateFlow<Boolean>
         get() = _isErrorOccurred
 
-    fun createBooking(booking: Booking) {
+    fun createBooking(body: Booking) {
         CoroutineScope(Dispatchers.IO).launch {
             ApiIdlingResource.increment()
-            val response = mBookingRepository.createBooking(booking)
-            if (response.success) {
-                _isErrorOccurred.value = false
-            } else {
-                _errorMessage.postValue(response.message)
-                _isErrorOccurred.value = true
-            }
+            val result = mBookingRepository.createBooking(body)
+
+            if (result.success) _isSuccess.value = true
             ApiIdlingResource.decrement()
         }
     }

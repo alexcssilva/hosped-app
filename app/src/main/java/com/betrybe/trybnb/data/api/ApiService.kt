@@ -27,6 +27,7 @@ interface ApiService {
     ): Response<Booking>
 
     @POST("booking")
+    @Headers("Accept: application/json")
     suspend fun createBooking(
         @Body booking: Booking
     ): Response<CreatedBooking>

@@ -5,6 +5,7 @@ import com.betrybe.trybnb.data.models.BookingId
 import com.betrybe.trybnb.data.models.CreatedBooking
 import com.betrybe.trybnb.data.models.Response
 import com.betrybe.trybnb.data.network.BookingDataSource
+import java.net.ConnectException
 
 class BookingRepository(private val mBookingDataSource: BookingDataSource = BookingDataSource()) {
     suspend fun getAllBookingIds(): Response<List<BookingId>> {
@@ -33,13 +34,10 @@ class BookingRepository(private val mBookingDataSource: BookingDataSource = Book
 
     suspend fun createBooking(booking: Booking): Response<CreatedBooking> {
         try {
-            val createdBooking = mBookingDataSource.createBooking(booking)
-            if (createdBooking != null) {
-                return Response(true, "", createdBooking)
-            }
-        } catch (e: Exception) {
-            return Response(false, e.message.orEmpty(), null)
+            val bookingResponse = mBookingDataSource.createBooking(booking)
+            return Response(true, "", bookingResponse)
+        } catch (e: ConnectException) {
+            return Response(false, e.message.toString(), null)
         }
-        return Response(false, "Erro ao criar reserva", null)
     }
 }

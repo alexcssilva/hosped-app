@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.betrybe.trybnb.R
 import com.betrybe.trybnb.data.models.Booking
 import com.betrybe.trybnb.data.models.BookingDates
 import com.betrybe.trybnb.databinding.FragmentCreateReservationBinding
 import com.betrybe.trybnb.ui.viewmodels.CreateReservationViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class CreateReservationFragment : Fragment() {
     private lateinit var binding: FragmentCreateReservationBinding
@@ -24,87 +29,84 @@ class CreateReservationFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_create_reservation, container, false)
         binding = FragmentCreateReservationBinding.bind(view)
+
+        binding.createReservationButton.setOnClickListener {
+            var readyToPost = true
+            val reservationLinearLayout: ViewGroup =
+                view.findViewById(R.id.reservation_linear_layout)
+            for (i in 0 until reservationLinearLayout.childCount) {
+                val child = reservationLinearLayout.getChildAt(i)
+                if (child !is TextInputLayout) continue
+                isInputEmpty(child)
+                if (child.error != null) {
+                    readyToPost = false
+                }
+            }
+
+            if (readyToPost) {
+                val checkin =
+                    reformatDate(binding.checkinCreateReservation.editText?.text.toString())
+                val checkout =
+                    reformatDate(binding.checkoutCreateReservation.editText?.text.toString())
+                lateinit var bookingDates: BookingDates
+                if (checkin != null && checkout != null) {
+                    bookingDates = BookingDates(checkin, checkout)
+
+                    val body = Booking(
+                        firstname = binding.firstNameCreateReservation.editText?.text.toString(),
+                        lastname = binding.lastNameCreateReservation.editText?.text.toString(),
+                        totalprice = binding.totalPriceCreateReservation.editText?.text.toString()
+                            .toInt(),
+                        depositpaid = binding.depositpaidCreateReservation.isChecked,
+                        bookingdates = bookingDates,
+                        additionalneeds = binding.additionalNeedsCreateReservation
+                            .editText?.text.toString()
+                    )
+                    viewModel.createBooking(body)
+                }
+                viewLifecycleOwner.lifecycleScope.launch {
+                    viewModel.isBookingCreationSuccess.collect { success ->
+                        if (success) {
+                            Snackbar.make(
+                                binding.createReservationScrollView,
+                                getString(R.string.booking_success),
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+        }
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.createReservationButton.setOnClickListener {
-            validateFields()
-
-            if (validateFields()) {
-                viewModel.createBooking(
-                    Booking(
-                        binding.firstNameInput.text.toString(),
-                        binding.lastNameInput.text.toString(),
-                        binding.totalPriceInput.text.toString().toInt(),
-                        binding.depositpaidCreateReservation.isChecked,
-                        BookingDates(
-                            binding.checkinInput.text.toString(),
-                            binding.checkoutInput.text.toString()
-                        ),
-                        binding.additionalNeedsInput.text.toString()
-                    )
-                )
-            }
-            val error = viewModel.isErrorOccurred.value
-            if (error) {
-                Snackbar.make(
-                    binding.createReservationScrollView,
-                    "Erro ao criar reserva",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            } else {
-                Snackbar.make(
-                    binding.createReservationScrollView,
-                    "Reserva feita com sucesso!",
-                    Snackbar.LENGTH_SHORT
-                ).show()
-            }
+    private fun isInputEmpty(input: TextInputLayout) {
+        if (input.editText?.text?.isEmpty() == true) {
+            input.error =
+                "O campo ${input.hint.toString()
+                    .replace(" do hóspede", "")
+                    .replace("adicionais", "Adicionais")
+                    .replace("total", "Total")
+                } é obrigatório"
+        } else {
+            input.error = null
         }
     }
 
-    private fun validateFields(): Boolean {
-        var isValid = true
-        if (binding.firstNameCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.firstNameCreateReservation.error = getString(R.string.name_required)
-            isValid = false
-        } else {
-            binding.firstNameCreateReservation.error = null
-        }
-        if (binding.lastNameCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.lastNameCreateReservation.error = getString(R.string.last_name_required)
-            isValid = false
-        } else {
-            binding.lastNameCreateReservation.error = null
-        }
-        if (binding.checkinCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.checkinCreateReservation.error = getString(R.string.checkin_required)
-            isValid = false
-        } else {
-            binding.checkinCreateReservation.error = null
-        }
-        if (binding.checkoutCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.checkoutCreateReservation.error = getString(R.string.checkout_required)
-            isValid = false
-        } else {
-            binding.checkoutCreateReservation.error = null
-        }
-        if (binding.additionalNeedsCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.additionalNeedsCreateReservation.error =
-                getString(R.string.additional_needs_required)
+    private fun reformatDate(inputDate: String): String? {
+        val inputFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val outputFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-            isValid = false
-        } else {
-            binding.additionalNeedsCreateReservation.error = null
+        return try {
+            val date = inputFormatter.parse(inputDate)
+            if (date != null) {
+                outputFormatter.format(date)
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
         }
-        if (binding.totalPriceCreateReservation.editText?.text.isNullOrEmpty()) {
-            binding.totalPriceCreateReservation.error = getString(R.string.total_price_required)
-            isValid = false
-        } else {
-            binding.totalPriceCreateReservation.error = null
-        }
-        return isValid
     }
 }

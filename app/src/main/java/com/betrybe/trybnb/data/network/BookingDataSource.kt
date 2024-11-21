@@ -18,8 +18,9 @@ class BookingDataSource {
         return booking.body()
     }
 
-    suspend fun createBooking(booking: Booking): CreatedBooking? {
-        val newBooking = mApiServiceClient.createBooking(booking)
-        return newBooking.body()
+    suspend fun createBooking(body: Booking): CreatedBooking? {
+        val createBookingResponse = mApiServiceClient.createBooking(body)
+
+        return createBookingResponse.body()
     }
 }

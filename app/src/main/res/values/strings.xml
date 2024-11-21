@@ -14,7 +14,7 @@
     <string name="additional_needs_required">O campo Necessidades Adicionais é obrigatório</string>
     <string name="total_price_required">O campo Preço Total é obrigatório</string>
     <string name="login_success">Login feito com sucesso!</string>
-    <string name="guest_name">Nome do Hóspede</string>
+    <string name="guest_name">Nome do hóspede</string>
     <string name="last_name">Sobrenome do hóspede</string>
     <string name="checkin">Checkin</string>
     <string name="checkout">Checkout</string>
