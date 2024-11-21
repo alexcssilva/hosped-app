@@ -24,5 +24,6 @@
     <string name="additional_needs">Necessidades adicionais</string>
     <string name="total_price">Preço total</string>
     <string name="deposit_paid">Depósito Pago</string>
-    Depósito Pago
+    <string name="booking_success">Reserva feita com sucesso!</string>
+    <string name="booking_error">Erro ao criar reserva</string>
 </resources>

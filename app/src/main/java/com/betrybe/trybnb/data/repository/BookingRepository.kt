@@ -2,6 +2,7 @@ package com.betrybe.trybnb.data.repository
 
 import com.betrybe.trybnb.data.models.Booking
 import com.betrybe.trybnb.data.models.BookingId
+import com.betrybe.trybnb.data.models.CreatedBooking
 import com.betrybe.trybnb.data.models.Response
 import com.betrybe.trybnb.data.network.BookingDataSource
 
@@ -28,5 +29,17 @@ class BookingRepository(private val mBookingDataSource: BookingDataSource = Book
             return Response(false, e.message.orEmpty(), null)
         }
         return Response(false, "Erro ao carregar reserva", null)
+    }
+
+    suspend fun createBooking(booking: Booking): Response<CreatedBooking> {
+        try {
+            val createdBooking = mBookingDataSource.createBooking(booking)
+            if (createdBooking != null) {
+                return Response(true, "", createdBooking)
+            }
+        } catch (e: Exception) {
+            return Response(false, e.message.orEmpty(), null)
+        }
+        return Response(false, "Erro ao criar reserva", null)
     }
 }
