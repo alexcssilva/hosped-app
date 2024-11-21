@@ -7,6 +7,12 @@
     <string name="password">Password</string>
     <string name="email_empty_warning">O campo Login é obrigatório</string>
     <string name="password_empty_warning">O campo Password é obrigatório</string>
+    <string name="name_required">O campo Nome é obrigatório</string>
+    <string name="last_name_required">O campo Sobrenome é obrigatório</string>
+    <string name="checkin_required">O campo Checkin é obrigatório</string>
+    <string name="checkout_required">O campo Checkout é obrigatório</string>
+    <string name="additional_needs_required">O campo Necessidades Adicionais é obrigatório</string>
+    <string name="total_price_required">O campo Preço Total é obrigatório</string>
     <string name="login_success">Login feito com sucesso!</string>
     <string name="guest_name">Nome do Hóspede</string>
     <string name="last_name">Sobrenome do hóspede</string>
