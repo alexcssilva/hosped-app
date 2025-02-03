@@ -48,4 +48,4 @@ Este projeto está sob licença MIT.
 
 ## 👤 Autor
 ---
-Desenvolvido por [Seu Nome] - [@seuusuario](https://github.com/seuusuario)
+Desenvolvido por Alex Silva - [@alexcssilva](https://github.com/alexcssilva)
