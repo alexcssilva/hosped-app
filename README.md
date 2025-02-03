@@ -2,7 +2,6 @@
 Um aplicativo Android para gerenciamento de reservas de hotéis, permitindo criar, visualizar e autenticar reservas usando a API Restful Booker.
 
 ## 🎥 Demonstração
-
 <p align="center">
   <a href="https://www.figma.com/proto/mt1D77RbgyzY1ih2Pitbwq/Hosped-App?node-id=11-1833&t=uzUDKVdxlsmkVOVP-1"><img src="./assets/hospedApp.png" alt="app-hospedagem"/></a>
 </p>
@@ -29,8 +28,14 @@ Um aplicativo Android para gerenciamento de reservas de hotéis, permitindo cria
 
 ## 🚀 Como Executar
 1. Clone o repositório
+```bash
+git clone https://github.com/alexcssilva/hosped-app.git
+```
 2. Abra o projeto no Android Studio
 3. Sincronize as dependências do Gradle
+```bash
+./gradlew build
+```
 4. Execute o aplicativo no emulador ou dispositivo
 
 ## 💡 Como Usar
@@ -42,9 +47,6 @@ Um aplicativo Android para gerenciamento de reservas de hotéis, permitindo cria
 ## 🧪 Testes
 - Testes unitários: `./gradlew testDebugUnitTest`
 - Testes instrumentados: `./gradlew connectedAndroidTest`
-
-## 📝 Licença
-Este projeto está sob licença MIT.
 
 ## 👤 Autor
 ---
