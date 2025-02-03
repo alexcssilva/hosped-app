@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
-    <color name="navigation">#3C5A4E</color>
+    <color name="navigation">#003865</color>
     <color name="depositpaid">#92FD8A</color>
     <color name="not_depositpaid">#FD8A8A</color>
+
+    <!-- Textos -->
+    <color name="text_primary">#003865</color>
+    <color name="text_secondary">#A9B3C1</color>
+    <color name="text_tertiary">#F5F5F5</color>
+    <color name="text_highlight">#1C1C1C</color>
+
 </resources>

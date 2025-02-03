@@ -22,6 +22,7 @@
             android:layout_marginBottom="50dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/profile"
+            app:startIconTint="@color/icon_highlight"
             app:srcCompat="@drawable/ic_person" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -29,12 +30,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_login"
+            android:textColorHint="@color/text_secondary"
+            app:startIconTint="@color/icon_highlight"
             android:hint="@string/login">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -42,6 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_password"
+            android:textColorHint="@color/text_secondary"
+            app:startIconTint="@color/icon_highlight"
             android:hint="@string/password"
             android:layout_marginBottom="50dp">
 

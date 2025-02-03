@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.betrybe.trybnb'
+    namespace 'com.project.hospedApp'
     compileSdk 33
 
     defaultConfig {
